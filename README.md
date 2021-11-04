@@ -2,13 +2,8 @@
 A web application for a fake Pizza Store, the app let you create an account and order pizza, complements or drinks. <br>
 Built in **Python** & **Flask**
 
-<p float="left">
-<img align="left" src= "https://pbs.twimg.com/profile_images/1420624565097488386/8FyEmt5s_400x400.jpg" height="300px"/> 
-<h2>Al rato subo el preview de la app, ando comiendo; saludos.</h2>
-</p>
 
-<br><br><br><br><br><br>
-<br><br><br>
+<img align="center" src= "https://github.com/Ari-Qu3sadillas/Pizza-Pizza-Store/blob/main/screenshots/pizzapizza-intro.gif" width="1000px"/> 
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)

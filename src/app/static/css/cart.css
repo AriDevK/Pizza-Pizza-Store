@@ -1,0 +1,25 @@
+/* CART, BUY & SUCCESS STYLES */
+.title{
+    font-size: 7vh;
+    font-family: "heyAugust";
+    text-align: center;
+}
+
+.card{
+    background-color: rgba(100, 100, 100, 0.5);
+    border-width: 5px;
+    min-height: 60vh;
+}
+
+.card-body{
+    padding-bottom: 45px;
+}
+
+.item{
+    border-width: 15px;
+    background-color: #6F2232;
+}
+
+.information{
+    text-align: right;
+}

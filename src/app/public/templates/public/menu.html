@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% from '/macros/_card.html' import render_card %}
+
+{% block title %}
+    {{ super() }} Menú
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+{% endblock styles %}
+
+{% block container %}
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center" style="font-size:70px">MENÚ</h1>
+        </div>
+    </div>
+
+    {% for item in menu %}
+        {{ render_card(name=item.name, description=item.description, position='horizontal', prices=prices) }}
+    {% endfor %}
+{% endblock container %}

@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block title %}
+	{{ super() }} Carrito
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+{% endblock styles %}
+
+{% block container %}
+    <div class="row">
+        <div class="col">
+            <div class="card mt-4">
+                <h1 class="text-white ms-4 mt-4 title">Carrito</h1>
+                <div class="card-body">
+                	{% if cart %}
+                    	{% for item, quantity in cart.items()  %}
+							<div class="card mb-3 item" style="max-width: 100%;min-height: 50%;">
+								<div class="row g-0">
+									<div class="col-md-4">
+										<img src="{{ url_for('static', filename='images/menu/' + item + '.png') }}" class="img-fluid rounded-start" alt="...">
+									</div>
+									<div class="col-md-8">
+										<div class="card-body">
+											<h2 class="card-title text-white" style="display:inline;">{{ item }}</h2>
+											<a href="{{ url_for('cart.remove_cart', item=item) }}" onclick="if(!confirm('Desea eliminar este producto?'))event.preventDefault();">
+												<img class="position-absolute top-0 end-0 mt-3 me-3" src="{{ url_for('static', filename='svgs/solid/trash-alt.svg') }}" style="max-width:20px;filter: invert(100%) sepia(86%) saturate(268%) hue-rotate(256deg) brightness(116%) contrast(100%);">
+											</a>
+											<p class="card-text text-white information mt-4">Cantidad: {{ quantity }}</p>
+											<p class="card-text text-white information">Precio: ${{ prices[item] }}</p>
+											<p class="card-text text-white information"><b>Total: ${{ prices[item] * quantity }}</b></p>
+										</div>
+									</div>
+								</div>
+							</div>
+                    	{% endfor %}
+						<div style="display:flex;justify-content:flex-end;">
+							<h1 class="text-white">
+								{% with total=namespace(value=0) %}
+									{% for item, quantity in cart.items() %}
+										{% set total.value = total.value + prices[item] * quantity %}
+									{% endfor %}
+									Total ${{ total.value }}
+								{% endwith %}
+							</h1>
+						</div>
+						<div style="display:flex;justify-content:flex-end;">
+						<a href="{{ url_for('cart.buy_cart') }}" type="btn" class="btn btn-danger me-3">
+							Comprar
+						</a>
+						<a href="{{ url_for('public.menu') }}" type="btn" class="btn btn-secondary">
+							Seguir comprando
+						</a>
+						</div>
+                  	{% else %}
+                    	<li class="text-white">No hay elementos en el carrito</li>
+                  	{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}

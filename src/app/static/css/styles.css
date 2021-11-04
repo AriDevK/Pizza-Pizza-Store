@@ -1,0 +1,13 @@
+/* GENERAL STYLES */
+@font-face{
+    font-family: "heyAugust";
+    src: url(../fonts/Hey\ August.ttf);
+}
+
+body{
+    background-color:  #1A1A1D !important;
+}
+
+.container{
+    padding-top: 10px;
+}

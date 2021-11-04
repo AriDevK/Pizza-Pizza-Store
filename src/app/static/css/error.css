@@ -1,0 +1,9 @@
+/* ERROR PAGES STYLES */
+img{
+    max-height: 600px;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+}

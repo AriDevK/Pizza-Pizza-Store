@@ -1,0 +1,10 @@
+{% macro render_flashes(class) %}
+    {% with msgs = get_flashed_messages(category_filter=[class]) %}
+        {% for msg in msgs %}
+            <div class="alert alert-{{ class }}" id="flash" role="alert">
+                <i class="close icon"></i>
+                {{ msg }}
+            </div>
+        {% endfor %}
+    {% endwith %}
+{% endmacro %}

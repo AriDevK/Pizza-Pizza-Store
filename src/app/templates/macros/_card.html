@@ -1,0 +1,41 @@
+<!-- TODO: Anadir funcionalidad al boton de agregar al carrito -->
+{% macro render_card(name, description, link, position, prices=[]) %}
+
+{% if position == 'horizontal' %}
+    <div class="card mb-3" id="{{ name }}" style="max-width: 100vw; background-color: #6F2232;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='images/menu/' + name + '.png') }}" class="img-fluid rounded-start">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body" style="color: white;">
+                    <h2 class="card-title">{{ name }} ${{prices[name]}}</h2>
+                    <p class="card-text">{{ description }}</p>
+                    <p class="card-text">
+                        <a href="{{ '/cart/' + name }}" type="button" class="btn" style="color: white; background-color:#C3073F;" onMouseOut="this.style.backgroundColor='#C3073F'"onMouseOver="this.style.backgroundColor='#950740'">
+                            Añadir al carrito
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="col">
+        <div class="card text-center text-white mb-3 h-100" id="{{ name }}"
+            style="max-width: 25rem; background-color: #6F2232;">
+            <img src="{{ url_for('static', filename='images/menu/' + name + '.png') }}" class="card-img-top">
+            <div class="card-header fs-4">{{ name }}</div>
+            <div class="card-body">
+                <div class="d-grid gap-2">
+                    <a href="{{ '/cart/' + name }}" type="button" class="btn" style="color: white; background-color: #C3073F;" onMouseOut="this.style.backgroundColor='#C3073F'" onMouseOver="this.style.backgroundColor='#950740'">
+                        Añadir al carrito
+                    </a>
+                    <a href="{{ link }}" type="button" class="btn btn-secondary">Detalles</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
+
+{% endmacro %}

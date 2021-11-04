@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% from '/macros/_form_errors.html' import render_form_errors %}
+
+{% block title %}
+{{ super() }}Registro
+{% endblock title %}
+
+{% block styles %}
+{{ super() }}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/login-signup.css') }}">
+{% endblock styles %}
+
+{% block container %}
+<div class="row">
+    <div class="col position-relative">
+        <div class="card position-absolute top-0 start-50 translate-middle-x">
+            <div class="card-body">
+                <h1>REGISTRO</h1>
+                <form method="post">
+                    {{ form.csrf_token }}
+
+                    <div class="form-floating mb-3">
+                        {{ form.name(size=100, class_='form-control', placeholder='Name') }} {{ form.name.label }}
+                        {{ render_form_errors(form.name) }}
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        {{ form.email(class_='form-control', placeholder='Email') }} {{ form.email.label }}
+                        {{ render_form_errors(form.email) }}
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        {{ form.password(class_='form-control', placeholder='Password') }} {{ form.password.label }}
+                        {{ render_form_errors(form.password) }}
+                    </div>
+
+                    <div class="form-floating mb-3" align="center">
+                        {{ form.captcha }}
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        {{ form.submit(class_='btn btn-danger') }}
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock container %}

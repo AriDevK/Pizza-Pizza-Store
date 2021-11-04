@@ -1,0 +1,40 @@
+{% from '/macros/_flash.html' import render_flashes %}
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.svg') }}" type="image/x-icon">
+    <title>{% block title %}Pizza Pizza - {% endblock title %}</title>
+
+    {% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/navbar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all_fontawesome.min.css') }}">
+    {% endblock styles %}
+</head>
+
+<body>
+    {% include '/components/navbar.html' %}
+    <div class="flashes">
+        {% for class in ['danger', 'warning', 'info', 'dark'] %}
+            {{ render_flashes(class) }}
+        {% endfor %}
+    </div>
+
+    <div class="container">
+        {% block container %}
+        {% endblock container %}
+    </div>
+
+    {% block scripts %}
+        <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    {% endblock scripts %}    
+</body>
+
+</html>

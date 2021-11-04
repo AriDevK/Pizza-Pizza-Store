@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }}No encontrado
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/error.css') }}">
+{% endblock styles %}
+
+{% block container %}
+    <div class="row pt-5 mt-5">
+        <div class="col-md-5">
+            <div class="message text-white">
+                <h1>404 - No encontrado</h1>
+                <h3>El sitio que buscas no existe o no se encuentra disponible.</h3> <br>
+                <h3>Haz click <a href="{{ url_for('public.index') }}">aquí</a> para volver</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <img src="{{ url_for('static', filename='images/illustrations/404.png') }}" class="img-responsive">
+        </div>
+    </div>
+{% endblock container %}

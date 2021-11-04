@@ -1,0 +1,40 @@
+/* LOGIN & SIGN UP STYLES */
+h1{
+    color: white;
+    margin-top: 0px !important;
+    text-align: center;
+    font-family: "heyAugust";
+}
+
+.row{
+    padding-top: 30px;
+}
+
+.card{
+    background-color: rgba(100, 100, 100, 0.5);
+    /* border-color: #6F2232; */
+    border-width: 5px;
+}
+
+.card-body{
+    padding: 45px;
+}
+
+.card-body > form > * {
+    margin-top: 20px;
+}
+
+.register, .remember{
+    color: white;
+}
+
+.form-control:focus{
+    border-color: #950740e3;
+    border-width: 1px;
+    box-shadow: none;
+}
+
+.form-check-input:checked{
+    background-color: #950740;
+    border-color: #6F2232;
+}

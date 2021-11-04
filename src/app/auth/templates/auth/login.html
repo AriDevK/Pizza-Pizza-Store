@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% from '/macros/_form_errors.html' import render_form_errors %}
+
+{% block title %}
+{{ super() }} Iniciar sesión
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/login-signup.css') }}">
+{% endblock styles %}
+
+{% block container %}
+<div class="row">
+    <div class="col position-relative">
+        <div class="card position-absolute top-0 start-50 translate-middle-x">
+            <div class="card-body">
+
+                <h1>INICIAR SESION</h1>
+
+                <form method="post">
+                    {{ form.csrf_token }}
+
+                    <div class="form-floating mb-3">
+                        {{ form.email(size=100, class_='form-control', placeholder='Email') }} {{ form.email.label }}
+                        {{ render_form_errors(form.email) }}
+
+                    </div>
+
+                    <div class="form-floating mb-3">
+                        {{ form.password(class_='form-control', placeholder='Email') }} {{ form.password.label }}
+                    </div>
+
+                    <div class="form-check remember">
+                        {{ form.remember(class_='form-check-input') }} 
+                        {{form.remember.label(class_='form-check-label')}}
+                    </div>
+
+                    <div class="d-grid gap-2">
+                    {{ form.submit(class_='btn btn-danger') }}
+                    </div>
+                </form>
+
+                <div class="register">
+                    ¿No tienes cuenta aun?
+                    <a class="link" href="{{ url_for('auth.signup') }}">
+                        Registrate
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock container %}

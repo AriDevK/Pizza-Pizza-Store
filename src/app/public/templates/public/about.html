@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }} Acerca de
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+{% endblock styles %}
+
+{% block container %}
+    <div class="row mt-5 mb-5 pt-5 pb-5">
+        <div class="col">
+            <h1 class="text-white title">¿Quienes somos?</h1>
+            <h4 class="text-white">Nuestro nombre es Pizza Pizza y somos una nueva pizzeria con la propuesta de brindarte
+                un ambiente relajado y divertido para ti y tus amigos, contamos con un menu con diversos tipos de pizza, complementos
+                y bebidas para saciar tu apetito.
+            </h4>
+        </div>
+        <div class="col">
+            <img src="{{ url_for('static', filename='images/illustrations/cooking.png') }}" class="img-responsive">
+            <a href="https://www.freepik.es/vectores/diseno" class="text-white">Vector de Diseño creado por macrovector - www.freepik.es</a>
+        </div>
+    </div>
+    <div class="row mt-5 pt-5 pb-5">
+        <div class="col">
+            <img src="{{ url_for('static', filename='images/illustrations/delivered.png') }}" class="img-responsive">
+            <a href="https://www.freepik.es/vectores/diseno" class="text-white">Vector de Diseño creado por macrovector - www.freepik.es</a>
+        </div>
+        <div class="col">
+            <h1 class="text-white title">Servicio</h1>
+            <h4 class="text-white">El cliente siempre tiene la razon, y es el quien es merecedor de un trato excepcional por parte de nosotros.
+                Por lo que nuestros meseros y repartidores estan capacitados para ofrecerle el mejor servicio en tiempo, amabilidad y satisfaccion.
+            </h4>
+        </div>
+    </div>
+    <div class="row mt-5 mb-5 pt-5 pb-5">
+        <div class="col">
+            <h1 class="text-white title">Modalidades</h1>
+            <h4 class="text-white">Contamos tanto con modalidad de consumo en piso como servicio a domicilio con una garantia de 30
+                minutos o el pedido es gratis a partir de que se realice su pedido.
+            </h4>
+            <br>
+            <h4 class="text-white">Nuestro establecimiento, asi como nuestros empleados cuentan con todas las medidas sanitarias
+                para que usted, su familia y amigos se mantengan seguros y fuera de riesgos.
+            </h4>
+        </div>
+        <div class="col">
+            <img src="{{ url_for('static', filename='images/illustrations/dinner.png') }}" class="img-responsive">
+            <a href="https://www.freepik.es/vectores/diseno" class="text-white">Vector de Diseño creado por macrovector - www.freepik.es</a>
+        </div>
+    </div>
+{% endblock container %}

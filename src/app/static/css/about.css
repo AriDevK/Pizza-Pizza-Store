@@ -1,0 +1,10 @@
+.title{
+    font-size: 7vh;
+    font-family: "heyAugust";
+    text-align: center;
+}
+
+.img-responsive{
+    display: block;
+    max-height: 40vh;
+}

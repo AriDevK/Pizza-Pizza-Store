@@ -1,0 +1,31 @@
+/* NAVBAR STYLES */
+.navbar-brand{
+  font-family: "heyAugust";
+  font-size: 2rem !important;
+  margin-right: 3rem !important;
+}
+
+.nav-underline{
+  display: inline-block;
+  position: relative;
+  color: #cfcfdb !important;
+}
+
+.nav-underline::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  transform-origin: bottom center;
+  transition: transform 0.25s ease-out;
+}
+
+.nav-underline:hover::after{
+  color: #FFFFFF !important;
+  transform: scaleX(1);
+  transform-origin: bottom center;
+}

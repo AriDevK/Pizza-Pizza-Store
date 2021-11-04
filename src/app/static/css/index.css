@@ -1,0 +1,13 @@
+/* INDEX STYLES */
+h1{
+    color: white;
+    font-family: "heyAugust";
+}
+
+.carousel img{
+    border-radius: 20px;
+}
+
+.row{
+    padding-top: 30px;
+}

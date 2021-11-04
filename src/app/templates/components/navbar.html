@@ -1,0 +1,54 @@
+<nav class="navbar navbar-expand-lg navbar-fixed-top navbar-dark" style="background-color: #6F2232;">
+    <div class="container-fluid">
+        <span>
+            <a class="navbar-brand" href="{{ url_for('public.index') }}">
+                <i class="fas fa-pizza-slice"></i>
+                Pizza Pizza
+            </a>
+        </span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item pe-3">
+                    <a class="nav-link nav-underline" href="{{ url_for('public.menu') }}">Menú</a>
+                </li>
+                <li class="nav-item pe-3">
+                    <a class="nav-link nav-underline" href="{{ url_for('public.complements') }}">Complementos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-underline" href="{{ url_for('public.about') }}">Acerca de</a>
+                </li>
+            </ul>
+            <div class="d-flex" style="margin-right: 50px;">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('cart.cart') }}" class="nav-link nav-underline position-relative" style="color: white;">
+                        <div>
+                            {% if session["cart"] %}
+                            <span class="badge rounded-pill bg-danger">{{ session["cart"]|length }}</span>
+                            {% endif %}
+                            <i class="fas fa-shopping-cart"></i>
+                            Carrito
+                        </div>
+                    </a>
+                    <div class="dropdown">
+                        <span data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuButton">
+                            <a href="" class="nav-link nav-underline dropdown-toggle" style="color: white;">
+                                <i class="fas fa-user"></i>
+                                {{ current_user.name }}
+                            </a>
+                        </span>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="background-color: #4E4E50 !important;">
+                            <li><a class="dropdown-item" href="{{ url_for('public.profile') }}" style="color: white;" onMouseOut="this.style.backgroundColor='#4E4E50'" onMouseOver="this.style.backgroundColor='#333333'">Mi perfil</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('auth.logout') }}" style="color: white;" onMouseOut="this.style.backgroundColor='#4E4E50'" onMouseOver="this.style.backgroundColor='#333333'">Cerrar sesión</a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{{ url_for('auth.signup') }}" class="nav-link nav-underline">Registrarse</a>
+                    <a href="{{ url_for('auth.login') }}" class="nav-link nav-underline">Iniciar sesion</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>

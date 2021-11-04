@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% from '/macros/_form_errors.html' import render_form_errors %}
+
+{% block title %}
+    {{ super() }} {{ current_user.name }}
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock styles %}
+
+{% block container %}
+
+<div class="row">
+    <div class="col">
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="nav-link active text-white" id="v-pills-home-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true">Perfil</button>
+                        <button class="nav-link text-white" id="v-pills-config-tab" data-bs-toggle="pill"
+                            data-bs-target="#v-pills-config" type="button" role="tab" aria-controls="v-pills-messages"
+                            aria-selected="false">Configuración</button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active ms-4" id="v-pills-profile" role="tabpanel"
+                            aria-labelledby="v-pills-profile-tab">
+                            <div>
+                                <h1 class="text-white title">{{ current_user.name }}</h1>
+                                <small class="text-white">Registrado el {{ current_user.created_at.strftime('%d-%m-%Y') }}</small>
+                            </div>
+                            <div class="mt-5">
+                                <form method="POST">
+                                    {{ location_form.csrf_token }}
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ location_form.street.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ location_form.street(size=50, class_='form-control',placeholder='Jordania', value=current_user.street if current_user.street else '') }}
+                                            {{ render_form_errors(location_form.street) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ location_form.house_number.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ location_form.house_number(class_='form-control',placeholder='13', value=current_user.house_number if current_user.house_number else '') }}
+                                            {{ render_form_errors(location_form.house_number) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ location_form.zip_code.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ location_form.zip_code(class_='form-control',placeholder='99999', value=current_user.zip_code if current_user.zip_code else '') }}
+                                            {{ render_form_errors(location_form.zip_code) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ location_form.phone_number.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ location_form.phone_number(class_='form-control', placeholder='123 456 7890',value=current_user.phone_number if current_user.phone_number else '') }}
+                                            {{ render_form_errors(location_form.phone_number) }}
+                                        </div>
+                                    </div>
+                                    {{ location_form.submit(class_='btn btn-danger') }}
+                                </form>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade ms-4" id="v-pills-config" role="tabpanel"
+                            aria-labelledby="v-pills-config-tab">
+                            <div>
+                                <h1 class="text-white title">Configuración</h1>
+                                <small class="text-white">Al realizar cambios en esta sección debera volver a iniciar sesión.</small>
+                            </div>
+                            <div class="mt-5">
+                                <form method="POST">
+                                    {{ location_form.csrf_token }}
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ configuration_form.name.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ configuration_form.name(size=50, class_='form-control',placeholder='Juan Perez', value=current_user.name) }}
+                                            {{ render_form_errors(configuration_form.name) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ configuration_form.email.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ configuration_form.email(class_='form-control',placeholder='ejemplo@mail.com', value=current_user.email) }}
+                                            {{ render_form_errors(configuration_form.email) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-5">
+                                            {{ configuration_form.password.label(class_='form-label text-white') }}
+                                        </div>
+                                        <div class="col-7">
+                                            {{ configuration_form.password(class_='form-control', placeholder='---------', value='') }}
+                                            {{ render_form_errors(configuration_form.password) }}
+                                        </div>
+                                    </div>
+                                    {{ configuration_form.submit(class_='btn btn-danger') }}
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock container %}

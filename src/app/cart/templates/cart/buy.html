@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }} Comprar
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+{% endblock styles %}
+
+{% block container %}
+    <div class="row">
+        <div class="col">
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h1 class="text-white title pt-3 mb">YA CASI ES TUYA</h1>
+                    <ul class="text-white card item pt-2 mb-4" style="min-height:100%;border-width:5px;">
+                        <div style="display: inline;">
+                            <h4 class="card-title text-white mt-2">Verifique la información de su envio</h4>
+                            <a href="{{ url_for('public.profile') }}">
+                                <img class="position-absolute top-0 end-0 mt-3 me-3" src="{{ url_for('static', filename='svgs/solid/edit.svg') }}" style="max-width:20px;filter: invert(100%) sepia(86%) saturate(268%) hue-rotate(256deg) brightness(116%) contrast(100%);">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            <li>Nombre: {{ current_user.name }}</li>
+                            <li>Calle: {{ current_user.street }}</li>
+                            <li>Numero de casa: #{{ current_user.house_number }}</li>
+                            <li>Numero de telefono: {{ current_user.phone_number }}</li>
+                        </div>
+                    </ul>
+                    <ul class="text-white card item pt-2" style="min-height:100%;border-width:5px;">
+                        <div class="card-title" style="display:inline;">
+                            <h4 class="text-white pt-2">Resumen de compra</h4>
+                            <a href="{{ url_for('cart.cart') }}">
+                                <img class="position-absolute top-0 end-0 mt-3 me-3" src="{{ url_for('static', filename='svgs/solid/edit.svg') }}" style="max-width:20px;filter: invert(100%) sepia(86%) saturate(268%) hue-rotate(256deg) brightness(116%) contrast(100%);">
+                            </a>
+                        </div>
+                        <div class="card-body">
+                            {% with total=namespace(value=0) %}
+                                {% for product, quantity in cart.items() %}
+                                    <li class="text-white">{{ quantity }} x {{ product }} : ${{ prices[product] * quantity }}</li>  
+                                    {% set total.value = total.value + prices[product] * quantity %}
+                                {% endfor %}
+                                <br>
+                                <h4 class="text-white position-absolute bottom-0 end-0 mt-3 me-3">Total ${{ total.value }}</h4>
+                            {% endwith %}
+                        </div>
+                    </ul>
+                    <h4 class="text-white">Seleccione un método de pago</h4>
+                    <form action="{{ url_for('cart.cart_success') }}" method="post">
+                        <div class="d-inline-block tt" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualmente no disponible">
+                            <button class="btn btn-danger" disabled>
+                                <i class="fab fa-cc-mastercard"></i>
+                                <span>Tarjeta</span>
+                            </button>
+                        </div>
+                        <div class="d-inline-block tt" tabindex="0" data-bs-toggle="tooltip" data-bs-placement="top" title="Actualmente no disponible">
+                            <button class="btn btn-danger" disabled>
+                                <i class="fab fa-bitcoin"></i>
+                                <span>Bitcoin</span>
+                            </button>
+                        </div>
+                        <button class="btn btn-danger">
+                            <i class="fas fa-money-bill"></i>
+                            <span>Efectivo</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock container %}

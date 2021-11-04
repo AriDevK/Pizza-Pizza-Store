@@ -1,0 +1,39 @@
+/* PROFILE STYLES */
+.g-3{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.title{
+    font-size: 6vh;
+    font-family: "heyAugust";
+}
+
+.card{
+    background-color: rgba(100, 100, 100, 0.5);
+    border-width: 5px;
+    min-height: 60vh;
+}
+
+.card-body{
+    padding-top: 45px;
+    padding-bottom: 45px;
+}
+
+.form-control:focus{
+    border-color: #950740e3;
+    border-width: 1px;
+    box-shadow: none;
+}
+
+.nav-pills > .nav-link.active{
+    background-color: #6F2232 !important;
+}
+
+.nav-pills > .nav-link.active:hover{
+    background-color: #6F2232 !important;
+}
+
+.nav-pills > .nav-link:hover {
+    background-color: #2E2E2E !important;
+}

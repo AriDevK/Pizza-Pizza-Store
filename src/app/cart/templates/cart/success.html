@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ super() }}Completado
+{% endblock title %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+{% endblock styles %}
+
+
+{% block container %}
+    <div class="row">
+        <div class="col">
+            <h1 class="title text-white pt-3">Tu orden está en camino</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col" style="display: flex;justify-content:center;">
+            <img src="{{ url_for('static', filename='images/illustrations/delivery.png') }}" style="max-height: 450px;">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2 class="title text-white pt-4">¡Gracias por tu preferencia!</h2>
+            <h3><a href="{{ url_for('public.index') }}" class="text-white">Volver al inicio</a></h3>
+        </div>
+    </div>
+{% endblock container %}
